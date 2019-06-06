@@ -3,10 +3,8 @@ pipeline {
 
     stages {
         stage('checkout code') {
-            steps {
                 checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'UserIdentity', email: 'jenkins@biswajit,com', name: 'jenkins'], [$class: 'CleanBeforeCheckout']], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/biswajit-713/docker-react.git']]])
                 cleanWs()
-            }
         }
         stage('build image for dev') {
             steps {
