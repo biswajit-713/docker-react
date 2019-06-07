@@ -5,7 +5,7 @@ node {
     stage('checkout') {
         checkout scm
         sh "git describe --always > .git/commit_id"
-        commitId = readFile('./git/commit_id').trim()
+        commitId = readFile('./.git/commit_id').trim()
         echo "The commit id is ${commitId}"
     }
     stage('dev build') {
