@@ -1,6 +1,6 @@
 node {
     stage('checkout') {
-
+        checkout scm
     }
     stage('dev build') {
         
