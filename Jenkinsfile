@@ -1,15 +1,15 @@
 node {
 
     def commitId
+    def app
 
     stage('checkout') {
         checkout scm
         sh "git describe --always > .git/commit_id"
         commitId = readFile('./.git/commit_id').trim()
-        echo "The commit id is ${commitId}"
     }
-    stage('dev build') {
-        
+    stage('build image') {
+        app = docker.build("biswajit713/docker-react-dev:${commmidId}", "-f Dockerfile.dev .")
     }
     stage('run unit test') {
         
@@ -26,7 +26,7 @@ node {
     stage('run UI test') {
         
     }
-    stage('tag image') {
+    stage('tag image & push to registry') {
         
     }
 }
