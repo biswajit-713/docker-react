@@ -9,8 +9,8 @@ node {
         commitId = readFile('./.git/commit_id').trim()
     }
     stage('build image') {
-        echo "the image will be biswajit713/docker-react-dev:${commmitId}"
-        app = docker.build("biswajit713/docker-react-dev:${commmitId}", "-f Dockerfile.dev .")
+        echo "the image will be biswajit713/docker-react-dev:${commitId}"
+        app = docker.build("biswajit713/docker-react-dev:${commitId}", "-f Dockerfile.dev .")
     }
     stage('run unit test') {
         
