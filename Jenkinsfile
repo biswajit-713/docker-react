@@ -7,10 +7,9 @@ node {
         checkout scm
         sh "git describe --always > .git/commit_id"
         commitId = readFile('./.git/commit_id').trim()
-        echo "the commit id is ${commitId}"
     }
     stage('build image') {
-        echo "the commit id is ${commitId}"
+        echo "the image will be biswajit713/docker-react-dev:${commmitId}"
         app = docker.build("biswajit713/docker-react-dev:${commmitId}", "-f Dockerfile.dev .")
     }
     stage('run unit test') {
